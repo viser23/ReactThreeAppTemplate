@@ -3,7 +3,6 @@ import { state } from './../store.js'
 
 export function Storevalue() {
   const snap = useSnapshot(state)
-
   return (
       <div className='item-parameters'>
         <div>stack: {snap.stack}</div>
