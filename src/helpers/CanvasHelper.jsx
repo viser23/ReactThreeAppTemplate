@@ -1,6 +1,8 @@
 import { Html } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import {useEffect, useState} from 'react'
+import {Placeholder} from './Placeholder.jsx'
+
 
 export function CanvasHelper() {
     const ThreeState = useThree()
@@ -8,11 +10,11 @@ export function CanvasHelper() {
     const camera = ThreeState.camera
     // let cameraCoord = {}
     // console.log(ThreeState.camera)
-    console.log(camera)
+    // console.log(camera)
     const [cameraCoord, setCameraCoord] = useState(camera.position)
     
     useEffect(()=>{
-         console.log(cameraCoord) 
+        //  console.log(cameraCoord) 
      },[cameraCoord])
 
      useFrame(()=>{
@@ -22,7 +24,8 @@ export function CanvasHelper() {
     
     return (<>
         <axesHelper args={[1]} />
-        <gridHelper args={[6, 6, 0xffffff, 'gray']} />
+        <gridHelper args={[10, 10, 0xffffff, 'gray']} />
+        <Placeholder />
         {/* <Html className="htmlhelper">
         {Object.keys(cameraCoord).map(key => (
             <div key={key}>

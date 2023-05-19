@@ -1,29 +1,32 @@
 import { Canvas, useThree } from '@react-three/fiber'
 import { CanvasHelper } from '../helpers/CanvasHelper.jsx'
+import { Lights } from '../components/Lights.jsx'
+import { matBlu, matVerde } from './prjMaterials.jsx'
 import { Environment,  ContactShadows, OrbitControls, Box } from '@react-three/drei'
+
+import * as THREE from 'three'
+
 import { state } from './../store.js'
 import { useSnapshot } from 'valtio'
+
 
 
 export function ThreejsCanvas() {
     const snap = useSnapshot(state)
     const fov = 25
-    const position = [0, 2, 2.5]
+    const position = [0, 2, 10]
 
-    // const material = new THREE.MeshStandardMaterial({color:'#f00'})
+    const materials = []
+    console.log(materials.blu)
 
     return (
         <Canvas className={'canvas-' + snap.stack} shadows camera={{ position, fov }} gl={{ preserveDrawingBuffer: true }} eventSource={document.getElementById('root')} eventPrefix="client">
             <CanvasHelper />
             <OrbitControls  makeDefault  enableZoom={true} enablePan={true} enableRotate={true}/>
             <Environment preset="city" intensity={1} blur={0} resolution={2046}/>
-
-                <Box args={[1]} scale={0.1} position={[0,0,0]}>
-
-                </Box>
-
-            {/* <spotLight intensity={1} angle={0.8} penumbra={1} position={[5, 10, 5]} castShadow /> */}
-            {/* <ContactShadows position={[0, -0.2, 0]} rotation={[0, 0, 0]} opacity={0.6} scale={7} blur={1} />  */}
+                {/* SI POSIZIONA IN BASE AL CENTRO DELL'ITEM */}
+                <Box args={[1]} scale={0.2} position={[2,0.1,0]} material={matBlu}></Box>
+                <Box args={[1]} scale={1.8} position={[0.4,0.08,-0.78]} material={matVerde}></Box>
         </Canvas>
     )
 }
