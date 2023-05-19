@@ -1,4 +1,4 @@
-import { Html } from '@react-three/drei'
+import { Html,GizmoHelper,GizmoViewcube } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import {useEffect, useState} from 'react'
 import {Placeholder} from './Placeholder.jsx'
@@ -25,9 +25,12 @@ export function CanvasHelper() {
     
     return (<>
         <Perf position={'bottom-right'} />
-        <axesHelper args={[1]} />
-        <gridHelper args={[10, 10, 0xffffff, 'gray']} />
+        <axesHelper size={[1]} />
+        <gridHelper args={[10, 10, '#eee', '#333']} />
         <Placeholder />
+        <GizmoHelper alignment="bottom-left"  margin={[80, 80]}  gizmo="GizmoViewcube">
+            <GizmoViewcube />
+        </GizmoHelper>
         {/* <Html className="htmlhelper">
         {Object.keys(cameraCoord).map(key => (
             <div key={key}>
