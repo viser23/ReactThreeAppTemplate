@@ -1,6 +1,7 @@
 import { Box } from "@react-three/drei";
 import { button, folder, useControls } from "leva";
 
+
 export function Placeholder() {
     const [{ scale, color, wireframe, position }, set] = useControls(
       "Placeholder Box",
