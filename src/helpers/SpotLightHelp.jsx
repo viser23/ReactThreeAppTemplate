@@ -1,7 +1,7 @@
 import { useHelper } from "@react-three/drei"
 import { useRef } from "react"
 import { SpotLightHelper } from 'three'
-import { useControls,folder } from "leva";
+import { useControls } from "leva";
 
 
 export function SpotLightHelp(props) {

@@ -13,7 +13,7 @@ export function CameraContainer({children}) {
 
   const snap = useSnapshot(state)
   const group = useRef()
-  const { camera } = useThree();
+  // const { camera } = useThree();
 
     return (<OrbitControls  makeDefault  enableZoom={snap.stack=='forge' ? true : false} enablePan={false} enableRotate={false} minDistance={0.5} maxDistance={2}/>
     )

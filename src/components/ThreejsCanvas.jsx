@@ -1,16 +1,15 @@
 import { Canvas, useThree } from '@react-three/fiber'
 import { CanvasHelper } from '../helpers/CanvasHelper.jsx'
 import { Lights } from '../components/Lights.jsx'
-import { matBlu, matVerde, matViola } from './prjMaterials.jsx'
-import { Environment, ContactShadows, OrbitControls, Box } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 
 import { lazy, Suspense } from "react";
 
 
-const Level1  = lazy(() => import("./Level1"));
+// const Level1  = lazy(() => import("./Level1"));
 // import {Level1} from './Level1.jsx'
 
-import * as THREE from 'three'
+// import * as THREE from 'three'
 
 import { state } from './../store.js'
 import { useSnapshot } from 'valtio'
@@ -28,11 +27,11 @@ export function ThreejsCanvas() {
     return (
         <Canvas className={'canvas-' + snap.stack} shadows camera={{ position, fov }} gl={{ preserveDrawingBuffer: true }} eventSource={document.getElementById('root')} eventPrefix="client">
             <CanvasHelper />
-            {/* <Lights /> */}
-            <SpotLightHelp />
-            <RectAreaLightHelp />
+            <Lights />
+            {/* <SpotLightHelp /> */}
+            {/* <RectAreaLightHelp /> */}
             <OrbitControls makeDefault enableZoom={true} enablePan={true} enableRotate={true} />
-            <Environment preset="city" intensity={1} blur={0} resolution={2046} />
+            
             {/* SI POSIZIONA IN BASE AL CENTRO DELL'ITEM */}
             <Suspense>
                 {snap.stack == 'level1' && <Level1 position={[0, 0, 0]} />}
